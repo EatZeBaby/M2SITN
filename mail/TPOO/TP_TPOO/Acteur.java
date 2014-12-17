@@ -45,12 +45,11 @@ public class Acteur
         return this.listeFilms;
     }
     
+
     // Méthode pour ajouter un film à la liste de films
     public void ajouterFilm(Film unFilm)
     {
        this.listeFilms.add(unFilm);
-       System.out.println("Le film ");
-       unFilm.infoFilms();
-       System.out.println(" a été ajouté ");
+       System.out.println("Le film " + unFilm.infoFilms()+ " a été ajouté ");
     }
 }

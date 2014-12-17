@@ -28,7 +28,7 @@ public class Film
    
     public void testFixture()
     {
-        System.out.println("Je suis une méthode");
+        System.out.println("Je suis une méthode.");
     }
     
     // Getter
@@ -51,5 +51,14 @@ public class Film
     public void infoFilms()
     {
         System.out.println("Titre : " + this.nomFilm + " Budget : " + this.budgetFilm);
+    }
+
+    //methode pour ajouter un acteur à la liste des acteurs du film
+    public void addActeur( Acteur a )
+    {
+        this.listeActeurs.add(a);
+        System.out.println("L'acteur " + a.getNomActeur() + a.getPrenomActeur() +  "a été ajouté." );
+        
+        u
     }
 }
