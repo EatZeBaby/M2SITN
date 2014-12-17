@@ -52,4 +52,13 @@ public class Acteur
        this.listeFilms.add(unFilm);
        System.out.println("Le film " + unFilm.infoFilms()+ " a été ajouté ");
     }
+
+    public void afficherListeFilms()
+    {
+      for (Film film : listeFilms) 
+      {
+        System.out.println(film.infoFilms());
+      }
+    }
+
 }
