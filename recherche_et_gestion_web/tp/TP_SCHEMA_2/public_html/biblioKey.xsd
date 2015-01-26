@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:redefine schemaLocation="consult.xsd">
+        
+        <xs:group name="PersonneGroup" >
+            <xs:sequence>
+                <xs:element ref="nom" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="prenom" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:group>
+        <xs:complexType name="PersonneType">
+            <xs:complexContent>
+                <xs:extension base="PersonneType">
+                     <xs:attribute name="id" type="xs:ID" use ="required"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+        <xs:complexType name="DefaultLivreType">
+            <xs:complexContent>
+                <xs:extension base="DefaultLivreType">
+                    <xs:attribute name="auteur" type="xs:IDREFS" use ="required"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+  </xs:redefine>
+
+</xs:schema>

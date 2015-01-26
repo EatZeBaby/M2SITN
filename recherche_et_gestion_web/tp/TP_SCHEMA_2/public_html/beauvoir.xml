@@ -1,0 +1,12 @@
+<personne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="personne.xsd">
+<!-- personne.xml : instance du schema  XML personne.xsd -->
+	<nom>Bertrand de Beauvoir</nom>
+	<prenom>Simone-Lucie-Ernestine-Marie</prenom>
+	<naissance> Simone de Beauvoir est une philosophe, romancière, épistolière, mémorialiste et essayiste française.
+            <date>09/01/1908</date>
+            <lieu>
+                <ville>Paris</ville>
+            </lieu>
+     </naissance>
+</personne>

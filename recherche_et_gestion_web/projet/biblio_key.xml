@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<biblio
+<bibliotheque
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="biblio_emprunt_Key.xsd">
+	xsi:noNamespaceSchemaLocation="biblio_key.xsd">
 
 <!-- Definition des entites generales -->
 <auteur id="AustenJane" ref="AJ02"> 

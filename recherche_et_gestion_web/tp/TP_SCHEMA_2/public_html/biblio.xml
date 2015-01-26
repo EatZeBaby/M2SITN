@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:bibliotheque 
+	 xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xmlns:b='http://www.biblio.org'
+        xsi:schemaLocation='http://www.biblio.org biblio.xsd'>
+<b:livres>
+<b:livre id='AJ02'  ref="AustenJane">
+<b:titre>Persuasion</b:titre>
+<b:parution>1980</b:parution>
+<b:traduction>André Belamich</b:traduction>
+<b:editeur>Christian Bourgois Éditeur</b:editeur>
+</b:livre>
+<b:livre id="DL01"  ref="DenisLehane">
+<b:titre>Gone, Baby Gone</b:titre>
+<b:parution>2003</b:parution>
+<b:traduction>Isabelle Maillet</b:traduction>
+<b:editeur>Rivages/Thriller</b:editeur>
+</b:livre>
+<b:livre id="DL02"  ref="DenisLehane">
+<b:titre>Prières pour la pluie, (Prayers for Rain)</b:titre>
+<b:parution>2004</b:parution>
+<b:editeur>Rivages/Thriller</b:editeur>
+</b:livre>
+<b:livre id="DL03"  ref="DenisLehane">
+<b:titre>Ténèbres, prenez-moi la main, (Darkness, Take My Hand)</b:titre>
+<b:parution>2000</b:parution>
+<b:editeur>Rivages/Thriller</b:editeur>
+</b:livre>
+<b:livre id="DL04"  ref="DenisLehane">
+<b:titre>Un dernier verre avant la guerre (A Drink Before the War)</b:titre>
+<b:parution>1999</b:parution>
+<b:traduction>Mona de Pracontal</b:traduction>
+<b:editeur>Rivages/Thriller</b:editeur>
+</b:livre>
+</b:livres>
+<!-- Definition des entites generales -->
+<b:auteur id="AustenJane" ref="AJ02"> 
+	<b:nom>Austen</b:nom>
+	<b:prenom>Jane</b:prenom>
+	<b:naissance>née le 16 décembre 1775 à Steventon, 
+		dans le Hampshire en Angleterre</b:naissance>
+	<b:mort>morte le 18 juillet 1817 à Winchester </b:mort>
+</b:auteur>
+<b:auteur  id="DenisLehane" ref="DL02 DL03 DL04">
+<b:nom>Lehane</b:nom>
+<b:prenom>Denis</b:prenom>
+<b:naissance>Dennis Lehane est écrivain américain d'origine irlandaise,
+	 né le 4 août 1965 à Dorchester dans le Massachusetts</b:naissance>
+</b:auteur>
+<b:emprunteur id="e1" ref="z">
+    <b:nom>Bel</b:nom>
+    <b:prenom>Ouis</b:prenom>
+    <b:naissance>ahzdiaz</b:naissance>
+</b:emprunteur>
+<b:emprunt>
+    <b:date>23/11/2014</b:date>
+    <b:retour>24/11/2014</b:retour>
+    <b:rappel>25/11/2014</b:rappel>
+    <b:rappel>26/11/2014</b:rappel>
+</b:emprunt>
+
+ </b:bibliotheque>

@@ -1,9 +1,9 @@
-<auteur  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="auteur2.xsd"
-id="AustenJane" > 
+<auteur xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" 
+	xsd:noNamespaceSchemaLocation="auteur.xsd"
+        id="AustenJane"> 
 	<nom>Austen</nom>
 	<prenom>Jane</prenom>
-	<naissance>née le 16 décembre 1775 à Steventon, 
+	<naissance>nÃ©e le 16 dÃ©cembre 1775 Ã  Steventon, 
 		dans le Hampshire en Angleterre</naissance>
-	<mort>morte le 18 juillet 1817 à Winchester </mort>
-</auteur>
+	<mort>morte le 18 juillet 1817 Ã  Winchester </mort>
+    </auteur>

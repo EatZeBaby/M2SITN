@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    
+    <xs:include schemaLocation="personne.xsd" />
+    
+    <xs:complexType name="AuteurType">
+        <xs:complexContent>
+            <xs:extension base="PersonneType">
+                <xs:sequence> 
+                <xs:element ref="biographie"   minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="mort"   minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attributeGroup ref="Association1NGroup" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="auteur" type="AuteurType"/> 
+    <xs:element name="mort" type="NaissanceType" />
+    <xs:element name="biographie" type="BiographieType"/>
+    
+    <xs:complexType name="BiographieType" mixed="true">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="livre" type="DefaultLivreType" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="realisateur" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="acteur" minOccurs="0" maxOccurs="1"/>
+        </xs:choice>
+    </xs:complexType>
+    
+</xs:schema>

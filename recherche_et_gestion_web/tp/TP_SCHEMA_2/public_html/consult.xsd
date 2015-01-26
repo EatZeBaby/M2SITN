@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:include schemaLocation="auteur.xsd" />
+    
+    <xs:element name="bibliotheque" type="BibliothequeType" />
+    <xs:element name="livres" type="LivresType"/>
+    <xs:element name="livre"  type="LivreType"/>
+    
+    <xs:complexType name="BibliothequeType">
+        <xs:sequence>
+            <xs:element ref="livres" />
+            <xs:element ref="auteur" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>    
+    </xs:complexType>
+    
+    
+    <xs:complexType name="LivresType">
+        <xs:sequence>
+            <xs:element ref="livre" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:complexType name="DefaultLivreType">
+        <xs:sequence>
+            <xs:element ref="titre" />
+            <xs:element ref="parution" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:element name="titre" type="xs:string"/>
+    <xs:element name="parution" type="xs:token"/>
+    <xs:element name="traduction" type="NomType" />
+    <xs:element name="editeur" type="EditeurType" />
+   
+    
+    <xs:complexType name="LivreType">
+        <xs:complexContent>
+            <xs:extension base="DefaultLivreType">
+                <xs:sequence>
+                    <xs:element ref="traduction"  minOccurs="0" maxOccurs="1" />
+                    <xs:element ref="editeur" />
+                </xs:sequence>
+                <xs:attributeGroup ref="StatutGroup" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:simpleType name="EditeurType">
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="50" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    <xs:attributeGroup name="Association1NGroup">
+        <xs:attribute name="id"  type="xs:ID" use ="required"/>
+        <xs:attribute name="ref"  type="xs:IDREFS" use ="required"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="StatutGroup">
+        <xs:attributeGroup ref="Association1NGroup" />
+        <xs:attribute name="status" type="StatutType" use="optional" default="disponible"/>
+    </xs:attributeGroup>
+    
+    <xs:simpleType name="StatutType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="disponible" />
+            <xs:enumeration value="emprunt" />
+            <xs:enumeration value="disparu" />
+        </xs:restriction>   
+    </xs:simpleType>
+    
+    <xs:element name="defaultLivre" type="DefaultLivreType"/>
+   
+    <xs:attributeGroup name="emptyGroup"></xs:attributeGroup>
+    <xs:attributeGroup name="myGroup">
+<!--         <xs:attribute name="id"  type="xs:ID" use ="optional"/>-->
+                    <xs:attribute name="nom_auteur"  type="xs:IDREF" use ="optional"/>
+                    <xs:attribute name="prenom_auteur"  type="xs:IDREF" use ="optional"/>
+    </xs:attributeGroup>
+
+    
+</xs:schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="unqualified">
+    <!--           xmlns="http://www.biblio.org"
+    targetNamespace="http://www.biblio.org"-->
+    
+    <xs:redefine schemaLocation="consult.xsd">
+        <xs:complexType name="BibliothequeType">
+            <xs:complexContent>
+                <xs:extension base="BibliothequeType" >
+                    <xs:sequence>
+                        <xs:element ref="emprunteur" minOccurs="1" maxOccurs="unbounded"/>
+                        <xs:element ref="emprunt"  minOccurs="1" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+          
+    </xs:redefine>
+    
+    <xs:element name="emprunteur" type="EmprunteurType"/>
+    <xs:element name="emprunt" type="EmpruntType"/>
+  
+    
+    <xs:complexType name="EmprunteurType">
+        <xs:complexContent>
+            <xs:extension base="PersonneType">
+                <xs:sequence>
+                    <xs:element ref="adresse" />
+                    <xs:element ref="telephone" />
+                </xs:sequence>
+                 <xs:attributeGroup ref="Association1NGroup" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="EmpruntType">
+        <xs:sequence>
+            <xs:element ref="date-emprunt"/>
+            <xs:element ref="date-retour"/>
+            <xs:element ref="date-rappel" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" />
+        <xs:attribute name="emprunteur" type="xs:IDREF" />
+        <xs:attribute name="livre" type="xs:IDREF" />
+    </xs:complexType>
+    <xs:element name="date-emprunt" type="DateType_F" />
+    <xs:element name="date-retour" type="DateType_F" />
+    <xs:element name="date-rappel" type="DateType_F" />
+</xs:schema>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<xsd:schema version="1.0"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="unqualified">
+    <!--           xmlns="http://www.biblio.org"
+    targetNamespace="http://www.biblio.org"-->
+    
+    <xsd:redefine schemaLocation="consult.xsd">
+        <xsd:complexType name="BibliothequeType">
+            <xsd:complexContent>
+                <xsd:extension base="BibliothequeType" >
+                    <xsd:sequence>
+                        <xsd:element ref="emprunteur" minOccurs="1" maxOccurs="unbounded"/>
+                        <xsd:element ref="emprunt"  minOccurs="1" maxOccurs="unbounded"/>
+                        <xsd:element ref="livres"  minOccurs="1" maxOccurs="unbounded"/>
+
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+          
+    </xsd:redefine>
+    
+    <xsd:element name="emprunteur" type="EmprunteurType"/>
+
+    <xsd:element name="emprunt" type="EmpruntType"/>
+  
+   
+
+
+    <xsd:complexType name="EmprunteurType">
+        <xsd:complexContent>
+            <xsd:extension base="PersonneType" >
+                <xsd:sequence>
+                    <xsd:element ref="adresse" />
+                    <xsd:element ref="telephone" />
+                </xsd:sequence>
+                 <xsd:attributeGroup ref="Association1NGroup" />
+            </xsd:extension>
+        </xsd:complexContent>
+
+    </xsd:complexType>
+    
+    <xsd:complexType name="EmpruntType">
+        <xsd:sequence>
+            <xsd:element ref="date-emprunt"/>
+            <xsd:element ref="date-retour"/>
+            <xsd:element ref="date-rappel" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+        <xsd:attribute name="emprunteur" type="xsd:IDREF" />
+        <xsd:attribute name="livre" type="xsd:IDREF" />
+    </xsd:complexType>
+    <xsd:element name="date-emprunt" type="DateType_F" />
+    <xsd:element name="date-retour" type="DateType_F" />
+    <xsd:element name="date-rappel" type="DateType_F" />
+</xsd:schema>

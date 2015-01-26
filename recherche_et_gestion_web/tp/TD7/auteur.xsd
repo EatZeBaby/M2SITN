@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-		<xsd:redefine schemaLocation="personne_copie.xsd"> 
+		
+    <xsd:include schemaLocation="personne_copie.xsd" /> 
 			
+                    <xsd:element name="auteur" type="AuteurType" />
+		    <xsd:element name="mort" type="NaissanceType" />
+		    <xsd:element name="biographie" type="BiographieType"/>
 
-			<xsd:group name="PersonneGroup" >
-				<xsd:sequence>
-					<xsd:element ref="nom"  minOccurs="0" maxOccurs="1"/>
-					<xsd:element ref="prenom" minOccurs="0" maxOccurs="1"/>
-					<xsd:element ref="naissance"   minOccurs="0" maxOccurs="1"/>
-					<xsd:element ref="biographie"   minOccurs="0" maxOccurs="1"/>
-					<xsd:element ref="mort"  type="NaissanceType" minOccurs="0" maxOccurs="1"/>
-				</xsd:sequence>
-			</xsd:group>
-
-			<xsd:complexType name="PersonneType">
-		       <xsd:attributeGroup ref="Association1NGroup"/>
+		  
+		    
+		    
+		    <xsd:complexType name="AuteurType">
+		        <xsd:complexContent>
+		            <xsd:extension base="PersonneType">
+		                <xsd:sequence> 
+		                <xsd:element ref="biographie"   minOccurs="0" maxOccurs="1"/>
+		                <xsd:element ref="mort"   minOccurs="0" maxOccurs="1"/>
+		                </xsd:sequence>
+		                <xsd:attributeGroup ref="Association1NGroup" />
+		            </xsd:extension>
+		        </xsd:complexContent>
 		    </xsd:complexType>
+		    
+		   
+		    <!-- trop précis, non évolutif, ne joue pas assez sur les substitutiongroup -->
+		    <xsd:complexType name="BiographieType" mixed="true">
+		        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+		            <xsd:element name="livre" type="DefaultLivreType" minOccurs="0" maxOccurs="1"/>
+		            <xsd:element ref="personne" minOccurs="0" maxOccurs="1"/>
+		        </xsd:choice>
+		    </xsd:complexType>
+		    
 
-	</xsd:redefine>
+		
 </xsd:schema>

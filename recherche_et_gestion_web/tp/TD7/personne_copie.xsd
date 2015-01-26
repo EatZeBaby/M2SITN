@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <xsd:include schemaLocation="util.xsd"/>
-    <!-- personne.xsd : schema XML définissant l'élément personne de  type PersonneType -->
+<xsd:include schemaLocation="consult.xsd"/>
+    <!-- personne.xsd : schema XML définissant l'élément personne de  type NomPersonneType -->
 <!--ENTITY % PERSONNE "nom,prenom,naissance"-->
+
 <xsd:element name="personne" type="PersonneType"/>
 
 <xsd:complexType name="PersonneType">
-<xsd:group ref="PersonneGroup"/>
+    <xsd:group ref="PersonneGroup"/>
 </xsd:complexType>
 
 
 <xsd:group name="PersonneGroup" >
-            <xsd:sequence >
-<xsd:element ref="nom"  minOccurs="0" maxOccurs="1"/>
-<xsd:element ref="prenom" minOccurs="0" maxOccurs="1"/>
-        <xsd:element ref="naissance"   minOccurs="0" maxOccurs="1"/>
+            <xsd:sequence>
+            <xsd:element ref="nom"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="prenom" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="naissance"   minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
 </xsd:group>
 
@@ -22,7 +24,9 @@
 	<xsd:complexContent> 
 		<xsd:restriction base="PersonneType">
 	
-                    <xsd:sequence ></xsd:sequence>
+                    <xsd:sequence >
+                        
+                    </xsd:sequence>
 	 </xsd:restriction>
 	</xsd:complexContent>
 </xsd:complexType>
@@ -47,7 +51,12 @@
 <xsd:simpleType name="NomType">
     <xsd:restriction base="xsd:normalizedString">
         <xsd:whiteSpace value="replace"/>
-            <xsd:pattern value="\p{Lu}\p{L}+((\s|\sde\s|-)?(\p{Lu}')?\p{Lu}\p{L}+){0,7}"/>
+            <!-- Lu: majuscule L minuscule : mot de deux lettres minimum suivi de 
+                        \s : espace, une particule éventuelle, un apostrophe éventuel
+                            et au maximum 7 noms, le tout d'un maximum de 60 caractères-->
+                        
+            <xsd:pattern value="\p{Lu}(\p{L})*((\s|\sde\s|-)?(\p{Lu}')?\p{Lu}\p{L}*){0,7}"/>
+            <!-- <xsd:pattern value="(\p{Lu}|\p{L}|\s|\-|.)*"/>-->
             <xsd:maxLength value="60"/>
     </xsd:restriction>
 </xsd:simpleType>
@@ -56,7 +65,8 @@ Napu AmoHalla Ona Ona Aneka Vehi Vehi Ona Hivea Nena Vava Keho Onka Kahe HeaLeka
 <!-- Li Ming , Antonio-Manuel , Maélys-->
 <xsd:simpleType name="PrenomType">
     <xsd:restriction base="xsd:token">
-        <xsd:pattern value="\p{Lu}\p{L}+((-|\s)?\p{Lu}\p{L}+){0,24}"/>
+
+        <xsd:pattern value="\p{Lu}\p{L}*((-|\s)?\p{Lu}\p{L}*\.*){0,24}"/>
             <xsd:maxLength value="125"/>
     </xsd:restriction>
 </xsd:simpleType>

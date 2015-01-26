@@ -1,8 +1,10 @@
-<personne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="personne.xsd">
-<!-- personne.xml : instance du schema  XML personne.xsd -->
-	<nom>Sartre</nom>
-	<prenom>Jean-Paul</prenom>
-	<naissance> Jean-Paul Sartre est un écrivain de langue française, philosophe politiquement engagé, également dramaturge, romancier, nouvelliste et essayiste.
+<personne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="personne_copie.xsd">
+
+    <nom>Sartre</nom>
+    <prenom>Jean-Paul</prenom>
+    
+	
+	<naissance> Jean-Paul Sartre est un Ã©crivain de langue franÃ§aise, philosophe politiquement engagÃ©, Ã©galement dramaturge, romancier, nouvelliste et essayiste.
             <date>21/06/1905</date>
             <lieu>
                 <ville>Paris</ville>

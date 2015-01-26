@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<xsd:schema version="1.0"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:redefine schemaLocation="consult.xsd">
+        <xsd:complexType name="BibliothequeType" mixed="true">
+            <xsd:complexContent>
+                <xsd:extension base="BibliothequeType" >
+                    <xsd:sequence >
+                        <xsd:element ref="emprunteur"  minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+          
+    </xsd:redefine>
+    
+    <xsd:redefine schemaLocation="consult.xsd">
+        <xsd:complexType name="LivreType" mixed="true">
+            <xsd:complexContent>
+                <xsd:extension base="LivreType" >
+                    <xsd:attribute>
+                        <xsd:attribute name="id" type="xsd:ID" />
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+          
+    </xsd:redefine>
+
+
+     <xsd:redefine schemaLocation="consult.xsd">
+        <xsd:attributeGroup name="StatutGroup">
+            <xsd:complexContent>
+                <xsd:extension base="Association1NGroup" >
+                    <xsd:sequence>
+    					<xsd:attribute name="status" type="StatusType" use="optional" default="disponible" />
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:attributeGroup>
+    </xsd:redefine>
+
+
+
+    <xsd:simpleType name="StatusType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="disponible" />
+            <xsd:enumeration value="emprunt" />
+          	<xsd:enumeration value="disparu" />
+        </xsd:restriction>   
+    </xsd:simpleType>
+</xsd:schema>

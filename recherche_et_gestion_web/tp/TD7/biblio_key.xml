@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<biblio
+<bibliotheque
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="biblio_emprunt_Key.xsd">
+	xsi:noNamespaceSchemaLocation="biblio_key.xsd">
 
 <!-- Definition des entites generales -->
 <auteur id="AustenJane" ref="AJ02"> 
@@ -72,18 +72,19 @@ est tiré de sa nouvelle intitulée dans sa version française
 </biographie>
 </auteur>
 
-<emprunteur id='LagaffeGaston' ref="e2">
+<emprunteur id='LagaffeGaston' ref="e2" >
+	
 	<nom>Lagaffe</nom>
 	<prenom>Gaston</prenom>
 	<naissance> 
 		<date>10/01/1950</date>
                 <lieu>
-                    <ville>Bruxelle</ville>
+                    <ville>Bruxelles</ville>
                 </lieu>
 	</naissance>
 	<adresse>
 		<numero>3</numero> 
-		<voie>rue Jean de la lune</voie>
+		<voie>rue Jean de lune</voie>
 		<code>75003</code>
                 <ville>Paris</ville>
 	</adresse>
@@ -116,36 +117,36 @@ est tiré de sa nouvelle intitulée dans sa version française
 <emprunt id="e2" livre="AJ02" emprunteur='LagaffeGaston' >
 	<date-emprunt>01/06/2014</date-emprunt>
 	<date-retour>03/07/2014</date-retour>	
-	</emprunt>	
-        <livres>
-        <livre id='AJ02'   nom_auteur="Austen" prenom_auteur="Jane">
-<titre>Persuasion</titre>
-<parution>1980</parution>
-<traduction>André Belamich</traduction>
-<editeur>Christian Bourgois Éditeur</editeur>
-</livre>
-<livre id="DL01"   nom_auteur="Lehane" prenom_auteur="Denis">
-<titre>Gone, Baby Gone</titre>
-<parution>2003</parution>
-<traduction>Isabelle Maillet</traduction>
-<editeur>Rivages/Thriller</editeur>
-</livre>
-<livre id="DL02" nom_auteur="Lehane" prenom_auteur="Denis">
-<titre>Prières pour la pluie, (Prayers for Rain)</titre>
-<parution>2004</parution>
-<editeur>Rivages/Thriller</editeur>
-</livre>
-<livre id="DL03"  nom_auteur="Lehane" prenom_auteur="Denis">
-<titre>Ténèbres, prenez-moi la main, (Darkness, Take My Hand)</titre>
-<parution>2000</parution>
-<editeur>Rivages\Thriller</editeur>
-</livre>
-<livre id="DL04"   nom_auteur="Lehane" prenom_auteur="Denis">
-<titre>Un dernier verre avant la guerre (A Drink Before the War)</titre>
-<parution>1999</parution>
-<traduction>Mona de Pracontal</traduction>
-<editeur>Rivages\Thriller</editeur>
-</livre>
+</emprunt>	
+<livres>
+    <livre id='AJ02'   nom_auteur="Austen" prenom_auteur="Jane" status="emprunt">
+    <titre>Persuasion</titre>
+    <parution>1980</parution>
+    <traduction>André Belamich</traduction>
+    <editeur>Christian Bourgois Éditeur</editeur>
+    </livre>
+    <livre id="DL01"   nom_auteur="Lehane" prenom_auteur="Denis">
+    <titre>Gone, Baby Gone</titre>
+    <parution>2003</parution>
+    <traduction>Isabelle Maillet</traduction>
+    <editeur>Rivages/Thriller</editeur>
+    </livre>
+    <livre id="DL02" nom_auteur="Lehane" prenom_auteur="Denis">
+    <titre>Prières pour la pluie, (Prayers for Rain)</titre>
+    <parution>2004</parution>
+    <editeur>Rivages/Thriller</editeur>
+    </livre>
+    <livre id="DL03"  nom_auteur="Lehane" prenom_auteur="Denis">
+    <titre>Ténèbres, prenez-moi la main, (Darkness, Take My Hand)</titre>
+    <parution>2000</parution>
+    <editeur>Rivages\Thriller</editeur>
+    </livre>
+    <livre id="DL04"   nom_auteur="Lehane" prenom_auteur="Denis">
+    <titre>Un dernier verre avant la guerre (A Drink Before the War)</titre>
+    <parution>1999</parution>
+    <traduction>Mona de Pracontal</traduction>
+    <editeur>Rivages\Thriller</editeur>
+    </livre>
 </livres>
- </biblio>
+ </bibliotheque>
 

@@ -2,51 +2,77 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.biblio.org" xmlns="http://www.biblio.org" elementFormDefault="qualified">-->
 <!--<xsd:include schemaLocation="personne.xsd"/>-->
-<xsd:redefine schemaLocation="auteur.xsd"/>
+<xsd:include schemaLocation="auteur.xsd"/>
 
+    <!--tous les éléments dont on va se servir pour définir des types complexes-->
 	<xsd:element name="bibliotheque" type="BibliothequeType"/>
 	<xsd:element name="livres" type="LivresType"/>
 	<xsd:element name="livre" type="LivreType" />
+    <xsd:element name="titre" type="TitreType"/>
+    <xsd:element name="parution" type="xsd:gYear"/>
+    <xsd:element name="traduction" type="NomType" />
+    <xsd:element name="editeur" type="EditeurType" />
+    <xsd:element name="defautLivre" type="DefaultLivreType" />
 
 
-	<xsd:complexType name="BibliothequeType">
-    	<xsd:complexContent> 
-            <xsd:sequence ></xsd:sequence>
-    	</xsd:complexContent>
+
+
+
+    <xsd:simpleType name="TitreType">
+        <xsd:restriction base="xsd:normalizedString">
+            <xsd:whiteSpace value="replace"/>
+                <xsd:pattern value="\p{Lu}(\p{L})*\,*((\,|\(|\)|\s|\sde\s|-)?(\p{Lu}')?(\p{Lu})?\p{L}*)*"/>
+                <xsd:maxLength value="100"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="BibliothequeType" mixed="true">
+            <xsd:sequence>
+                <xsd:element ref="livres" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element ref="auteur" minOccurs="0" maxOccurs="unbounded" />
+            </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="DefaultLivreType">
-    	<xsd:complexContent> 
-			<xsd:sequence >
-				<xsd:element name="titre" minOccurs="1" maxOccurs="1"/>
-            	<xsd:element name="parution" minOccurs="1" maxOccurs="1"/>
-			</xsd:sequence>
-    	</xsd:complexContent>
+
+    <xsd:complexType name="LivresType">
+        <xsd:sequence>
+            <xsd:element ref="livre" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="LivreType">
-    	<xsd:complexContent> 
-    		<xsd:extension base="DefaultLivreType">
-                <xsd:sequence >
-                	<xsd:element name="titre" minOccurs="1" maxOccurs="1"/>
-            		<xsd:element name="traduction" minOccurs="0" maxOccurs="1"/>
-            		<xsd:element name="editeur" minOccurs="1" maxOccurs="1"/>
-            		<xsd:element name="parution" minOccurs="1" maxOccurs="1"/>
-                   
+
+    <xsd:complexType name="DefaultLivreType">	
+			<xsd:sequence>
+				<xsd:element ref="titre"/>
+            	<xsd:element ref="parution" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>   	
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="LivreType" mixed="true">
+        <xsd:complexContent>
+            <xsd:extension base="DefaultLivreType">
+                <xsd:sequence >             	
+                    <xsd:element ref="traduction" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element ref="editeur" />
                 </xsd:sequence>
-    	 </xsd:extension>
-    	</xsd:complexContent>
+                <xsd:attributeGroup ref="StatutGroup" />
+                <xsd:attribute name="nom_auteur" use="optional"  />
+                <xsd:attribute name="prenom_auteur" use="optional"  />
+                
+            </xsd:extension>	
+        </xsd:complexContent>   
     </xsd:complexType>
+
 
     <xsd:attributeGroup name="StatutGroup">
     	<xsd:attributeGroup ref="Association1NGroup" />
-    	<xsd:attribute name="status" type="StatusType" use="optional" default="disponible" />
     </xsd:attributeGroup>
 
-    <xsd:element name="defautLivre" type="DefaultLivreType" />
-    <!--<xsd:element name="livre" substitutionGroup="defautLivre" />-->
-    <xsd:element name="traduction" substitutionGroup="nomType" />
-    <xsd:element name="editeur" substitutionGroup="EditeurType" />
+
+     
+    
 
      <xsd:simpleType name="EditeurType">
         <xsd:restriction base="xsd:normalizedString">
@@ -55,11 +81,11 @@
     </xsd:simpleType>
 
     <xsd:attributeGroup name="Association1NGroup" >
-		<xsd:sequence > 
-			<xsd:element ref="id"  minOccurs="1" maxOccurs="1" use="required"/>
-			<!--<xsd:element ref="livres" minOccurs="0" maxOccurs="1" use="optional"/>-->
-			<xsd:element ref="idrefs"   minOccurs="1" maxOccurs="1" use="required"/>
-		</xsd:sequence>
+
+        <xsd:attribute name="id"  type="xsd:ID" use="required"/>
+        
+        <xsd:attribute name="ref" type="xsd:IDREFS" use="optional" />
+		
 	</xsd:attributeGroup>
 
 
